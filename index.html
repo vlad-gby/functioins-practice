@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Functions practice</title>
+</head>
+
+<body>
+
+<div class="column one">
+
+  <!-- REVERSE-NUMBER -->
+  <div class="number-reverse">
+    <h1>Number-reverse</h1>
+    <span>Enter a positive number and click "OK" - </span>
+    <input placeholder="your number" class="input number" type="text">
+    <button onclick="calculate()">OK</button>
+    <div class="output-wrapper">
+      <p>Inverse number is:</p>
+      <p class="output number"></p>
+    </div>
+  </div>
+
+  <!-- PALINDROME -->
+  <div class="palindrome">
+    <h1>Is it a palindrome?</h1>
+    <span>Enter a word or phrase and click "OK" - </span>
+    <input placeholder="your word/phrase" class="input phrase" type="text">
+    <button onclick="palindromeTest()">OK</button>
+    <div class="output-wrapper">
+      <p>Is it a palindrome?</p>
+      <p class="output phrase"></p>
+    </div>
+  </div>
+
+  <!--COMBINATIONS-->
+  <div class="combinations">
+    <h1>Check all of the available combinations</h1>
+    <span>Enter a word and click "OK" - </span>
+    <input placeholder="your word/phrase" class="input array" type="text">
+    <button onclick="combine()">OK</button>
+    <div class="output-wrapper">
+      <p>Combinations are:</p>
+      <p class="output array"></p>
+    </div>
+  </div>
+</div>
+
+
+<div class="column two">
+  
+  <!-- ALPHABET -->
+  <div class="alphabet">
+    <h1>Arrange glyths in alphabetical order</h1>
+    <span>Enter a word or a phrase and click "OK" - </span>
+  
+    <input placeholder="your word/phrase" class="input alpha" type="text">
+    <button onclick="alphabet()">OK</button>
+  
+    <div class="output-wrapper">
+      <p>Output is :</p><p class="output alpha"></p>
+    </div>
+  </div>
+  
+  <!-- CAPITAL -->
+  <div class="capital">
+    <h1>I can capitalize your text!</h1>
+    <span>Enter a word or a phrase and click "OK" - </span>
+  
+    <input placeholder="your word/phrase" class="input capital" type="text">
+    <button onclick="capital()">OK</button>
+  
+    <div class="output-wrapper">
+      <p>Output is :</p><p class="output capital"></p>
+    </div>
+  
+  
+  </div>
+</div>
+
+
+<script>
+
+  // REVERSE-NUMBER
+  function calculate(){
+    let num = Number(document.querySelector('.input.number').value)
+    if (num){
+      let numReverse = Number( String(num).split('').reverse().join(''));
+      document.querySelector('.output.number').innerHTML = numReverse
+    }else{
+      alert('All characters have to be numbers without spaces')
+    }
+  }
+
+  // PALINDROME
+  function palindromeTest(){
+    let phrase = document.querySelector('.input.phrase').value.toLowerCase().replace(' ', '');
+    if (phrase === ''){alert('Enter something first'); return} 
+
+    let phraseReverse = phrase.split('').reverse().join('');
+
+    if(phrase != phraseReverse){
+      document.querySelector('.output.phrase').innerHTML = ' No, it\'s not'
+      document.querySelector('.output.phrase').style.color = 'red';
+    }else{
+      document.querySelector('.output.phrase').innerHTML = ' Yes, it is!'
+      document.querySelector('.output.phrase').style.color = 'greenyellow';
+    }
+  }
+ 
+  // COMBINE 
+  function combine(){
+    const inputStr = document.querySelector('.input.array').value;
+    const strLength = inputStr.length;
+    let start = 0, end = 1; i = 0, currStr = '';
+    let finArr = [];
+    if (inputStr === ''){alert('Enter something first'); return}
+
+    while (start < strLength){
+      currStr = ' ' + inputStr.slice(start, end);
+      finArr.push(currStr);
+      if (end < strLength){
+        end++;
+      }else{
+        start++;
+        end = start + 1;
+      }
+    }
+    document.querySelector('.output.array').innerHTML = finArr
+
+  }
+
+  // ALPHABET
+  function alphabet(){
+    const inputStr = document.querySelector('.input.alpha').value;
+    if (inputStr.replace(' ', '') != inputStr) alert('Spaces will be ignored')
+    let finStr = inputStr.split('').sort().join('')
+    document.querySelector('.output.alpha').innerHTML = finStr
+  }
+
+  // CAPITAL
+  function capital(inputArr = document.querySelector('.input.capital').value.split(' ')){
+    let arrLength = inputArr.length;
+    let outputStr = '';
+    for (let i = 0; i < arrLength; i++){
+      outputStr += (String(inputArr[i]).at(0).toUpperCase()) + String(inputArr[i]).slice(1) + ' ';
+    }
+    document.querySelector('.output.capital').innerHTML = (outputStr)
+
+  }
+ 
+</script>
+
+</body>
+</html>
