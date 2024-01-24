@@ -1,0 +1,35 @@
+body{
+  background-color: black;
+  display: flex;
+  justify-content: space-evenly;
+  gap: 24px;
+  color: rgb(255, 255, 255);
+}
+
+.column{
+  display: flex;
+  flex-direction: column;
+}
+
+ input, button{
+  border-color: rgb(255, 255, 255);
+ }
+
+.output-wrapper{
+  height: 48px;
+  margin:24px 0;
+  display: flex;
+  align-items: center;
+  gap:12px;
+}
+
+p{
+  font-size: 20px;
+}
+
+.output{
+  font-size: 24px;
+  font-weight: bold;
+}
+
+
